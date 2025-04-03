@@ -1,0 +1,18 @@
+---
+export const prerender = false;
+import Layout from '../layouts/Layout.astro';
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get('sb-access-token');
+const refreshToken = cookies.get('sb-refresh-token');
+
+if (accessToken && refreshToken) {
+  return redirect('/dashboard');
+}
+---
+
+<Layout title='Sign out'>
+  <h1>Your tasks will stay until you come back!!! See you soon</h1>
+  <a href='/login' class='btn'>Login again</a>
+</Layout>

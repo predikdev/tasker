@@ -1,6 +1,6 @@
 ---
 export const prerender = false;
-import Layout from '../layouts/Layout.astro';
+import LoginLayout from '../layouts/LoginLayout.astro';
 
 import { LoginForm } from '@/components/auth/login-form';
 
@@ -14,8 +14,8 @@ if (accessToken && refreshToken) {
 }
 ---
 
-<Layout title='Login'>
+<LoginLayout title='Login'>
   <main class='w-full h-dvh grid place-items-center place-content-center'>
     <LoginForm />
   </main>
-</Layout>
+</LoginLayout>

@@ -2,6 +2,8 @@
 export const prerender = false;
 import Layout from '../layouts/Layout.astro';
 
+import { LoginForm } from '@/components/auth/login-form';
+
 const { cookies, redirect } = Astro;
 
 const accessToken = cookies.get('sb-access-token');
@@ -13,12 +15,7 @@ if (accessToken && refreshToken) {
 ---
 
 <Layout title='Login'>
-  <h1>Login</h1>
-  <form action='/api/auth/login' method='post'>
-    <label for='email'>Email</label>
-    <input type='email' name='email' id='email' />
-    <label for='password'>Password</label>
-    <input type='password' name='password' id='password' />
-    <button type='submit'>Login</button>
-  </form>
+  <main class='w-full h-dvh grid place-items-center place-content-center'>
+    <LoginForm />
+  </main>
 </Layout>

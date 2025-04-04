@@ -1,0 +1,46 @@
+---
+export const prerender = false;
+import Layout from '../layouts/Layout.astro';
+import { supabase } from '../lib/supabase';
+
+import { UpdateForm } from '@/components/auth/update-form';
+
+const accessToken = Astro.cookies.get('sb-access-token');
+const refreshToken = Astro.cookies.get('sb-refresh-token');
+
+if (!accessToken || !refreshToken) {
+  return Astro.redirect('/login');
+}
+
+// Set session
+const { data: session, error } = await supabase.auth.setSession({
+  refresh_token: refreshToken.value,
+  access_token: accessToken.value,
+});
+
+if (error || !session?.user) {
+  Astro.cookies.delete('sb-access-token', { path: '/' });
+  Astro.cookies.delete('sb-refresh-token', { path: '/' });
+  return Astro.redirect('/login');
+}
+
+// Získání dalších dat z users tabulky
+const { data: userData, error: userError } = await supabase
+  .from('users')
+  .select('*')
+  .eq('id', session.user.id)
+  .single();
+
+if (userError) {
+  console.error('User data fetch failed:', userError);
+  return Astro.redirect('/login');
+}
+---
+
+<Layout title='dashboard'>
+  <h1>Profile page</h1>
+
+  <main class='w-full h-dvh grid place-items-center place-content-center'>
+    <UpdateForm client:load session={session} userData={userData} />
+  </main>
+</Layout>

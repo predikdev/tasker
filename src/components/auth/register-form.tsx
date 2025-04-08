@@ -24,7 +24,7 @@ export function RegisterForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form action='/api/auth/login' method='post'>
+          <form action='/api/auth/register' method='post'>
             <div className='flex flex-col gap-6'>
               <div className='grid gap-2'>
                 <Label htmlFor='display-name'>Display name</Label>

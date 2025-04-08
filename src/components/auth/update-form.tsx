@@ -18,7 +18,7 @@ type Props = {
     email?: string;
     first_name?: string;
     last_name?: string;
-    display_name?: string;
+    username?: string;
   };
 };
 
@@ -33,7 +33,7 @@ export function UpdateForm({
       <Card>
         <CardHeader>
           <CardTitle className='text-2xl'>
-            Update for: {userData.display_name}
+            Update for: {userData.username}
           </CardTitle>
           <CardDescription>Use this form to update your data</CardDescription>
         </CardHeader>
@@ -41,12 +41,12 @@ export function UpdateForm({
           <form action='/api/auth/update' method='post'>
             <div className='flex flex-col gap-6'>
               <div className='grid gap-2'>
-                <Label htmlFor='display-name'>Display name</Label>
+                <Label htmlFor='display-name'>Username</Label>
                 <Input
-                  id='display_name'
+                  id='username'
                   type='text'
-                  name='display_name'
-                  defaultValue={userData.display_name}
+                  name='username'
+                  defaultValue={userData.username}
                 />
               </div>
               <div className='grid gap-2'>

@@ -7,7 +7,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
   const first_name = formData.get('first_name')?.toString();
   const last_name = formData.get('last_name')?.toString();
-  const display_name = formData.get('display_name')?.toString();
+  const username = formData.get('username')?.toString();
   const email = formData.get('email')?.toString();
 
   // Get current user ID from auth.users
@@ -33,7 +33,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       id: user.id,
       first_name,
       last_name,
-      display_name,
+      username,
       email,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
@@ -45,7 +45,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       .update({
         first_name,
         last_name,
-        display_name,
+        username,
         email,
         updated_at: new Date().toISOString(),
       })

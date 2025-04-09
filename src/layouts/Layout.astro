@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import Sidebar from '@/components/sidebar/sidebar';
 ---
 
 <!doctype html>
@@ -11,7 +12,8 @@ import '@/styles/global.css';
     <meta name='generator' content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body class='w-full h-dvh'>
+  <body class='w-full h-svh flex'>
+    <Sidebar />
     <slot />
   </body>
 </html>

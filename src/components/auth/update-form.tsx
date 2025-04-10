@@ -10,26 +10,18 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-import { useEffect, useState } from 'react';
+import { getUserData } from '@/lib/getUserData';
 
-type Props = {
-  session: any;
-  userData: {
-    email?: string;
-    first_name?: string;
-    last_name?: string;
-    username?: string;
-  };
-};
-
-export function UpdateForm({
-  session,
-  userData,
+export default async function UpdateForm({
   className,
-  ...props
-}: React.ComponentPropsWithoutRef<'div'> & Props) {
+}: React.ComponentPropsWithoutRef<'div'>) {
+  const data = await getUserData();
+  if (!data?.session) {
+    return;
+  }
+  const userData = data?.userData || {};
   return (
-    <div className={cn('flex flex-col gap-6 min-w-md', className)} {...props}>
+    <div className={cn('flex flex-col gap-6 min-w-md', className)}>
       <Card>
         <CardHeader>
           <CardTitle className='text-2xl'>

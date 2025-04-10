@@ -39,6 +39,8 @@
   --sidebar-ring: oklch(0.705 0.015 286.067);
   /* Font */
   --satoshi: 'Satoshi Medium', 'sans-serif';
+  --nunito: 'Nunito', 'sans-serif';
+  --roboto: 'Roboto Flex', 'sans-serif';
 }
 
 .dark {
@@ -112,6 +114,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --font-satoshi: var(--satoshi);
+  --font-nunito: var(--nunito);
+  --font-roboto: var(--roboto);
 }
 
 @layer base {
@@ -119,6 +123,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-satoshi;
+    @apply bg-background text-foreground font-nunito;
   }
 }

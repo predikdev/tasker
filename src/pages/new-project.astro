@@ -1,0 +1,17 @@
+---
+import Layout from '@/layouts/Layout.astro';
+// import type { UserData } from '@/types/userData';
+
+export const prerender = false;
+import CreateNewProject from '@/components/project/new-project-form';
+// import { getUserData } from '@/lib/getUserData';
+// const data = await getUserData();
+
+// const userData = data?.userData || ({} as UserData);
+---
+
+<Layout>
+  <main>
+    <CreateNewProject />
+  </main>
+</Layout>

@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import Sidebar from '@/components/sidebar/sidebar';
+import Navbar from '@/components/navbar/navbar';
 ---
 
 <!doctype html>
@@ -14,6 +15,9 @@ import Sidebar from '@/components/sidebar/sidebar';
   </head>
   <body class='w-full h-svh flex'>
     <Sidebar />
-    <slot />
+    <main class='w-full p-2'>
+      <Navbar client:only />
+      <slot />
+    </main>
   </body>
 </html>

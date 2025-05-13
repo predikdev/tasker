@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import type { UserData } from '@/types/userData';
 
+import Navbar from '@/components/navbar/navbar';
+
 export const prerender = false;
 import { getUserData } from '@/lib/getUserData';
 const data = await getUserData();
@@ -10,8 +12,6 @@ const userData = data?.userData || ({} as UserData);
 ---
 
 <Layout>
-  <main>
-    <h1>We are happy to see you here</h1>
-    <p>{userData.username}</p>
-  </main>
+  <h1>We are happy to see you here</h1>
+  <p>{userData.username}</p>
 </Layout>
